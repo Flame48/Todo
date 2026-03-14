@@ -25,7 +25,7 @@ export default function TaskDisplay(
   const [activeId, setActiveId] = useState<string | null>(null);
   const activeItem = todos.find((t) => t.id === activeId);
   const sensors = useSensors(
-    useSensor(PointerSensor, { activationConstraint: { distance: 8 } }),
+    // useSensor(PointerSensor, { activationConstraint: { distance: 8 } }),
     useSensor(TouchSensor, {
       activationConstraint: { delay: 250, tolerance: 5 },
     }),
