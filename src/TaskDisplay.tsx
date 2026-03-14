@@ -1,7 +1,7 @@
 import {
   useSensors,
   useSensor,
-  PointerSensor,
+  // PointerSensor,
   DndContext,
   closestCenter,
   DragOverlay,
