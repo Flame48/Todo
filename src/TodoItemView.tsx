@@ -15,7 +15,7 @@ export function DeleteButton(props: { onClick?: () => void } & PT_className) {
     <button
       onClick={() => props.onClick?.()}
       className={jcn(
-        "opacity-0 group-hover:opacity-100 p-1.5 rounded-lg text-stone-300 hover:text-rose-400 hover:bg-rose-50 transition-all shrink-0",
+        "p-1.5 rounded-lg text-stone-300 hover:text-rose-400 hover:bg-rose-50 transition-all shrink-0",
         props.className,
       )}
       aria-label="Delete"
