@@ -49,7 +49,10 @@ export function DraggableHandle(props: { item: TodoItem } & PT_className) {
     <span
       {...attributes}
       {...listeners}
-      className={jcn("cursor-grab px-1 text-stone-300", props.className)}
+      className={jcn(
+        "cursor-grab px-1 text-stone-300 noselect",
+        props.className,
+      )}
     >
       ⠿
     </span>

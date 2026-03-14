@@ -56,7 +56,7 @@ export function PriorityDropdown(
         value={props.item.priority}
         onChange={props.onChange}
         className={jcn(
-          "text-xs font-mono font-medium rounded-md px-1.5 py-1 border-0 outline-none cursor-pointer appearance-none",
+          "text-sm font-mono font-medium rounded-md px-1.5 py-1 border-0 outline-none cursor-pointer appearance-none",
           meta.bg,
           meta.color,
         )}
@@ -78,7 +78,6 @@ export function PriorityDropdown(
 export function TodoContent(
   props: {
     item: TodoItem;
-    autoFocus?: boolean;
     editing?: boolean;
     draft?: any;
     onClickEmpty?: () => void;
@@ -88,16 +87,11 @@ export function TodoContent(
   } & PT_className,
 ) {
   const inputRef = useRef<HTMLInputElement>(null);
-  // Auto-focus when the component first mounts with autoFocus
-  useEffect(() => {
-    if (props.autoFocus) {
-      inputRef.current?.focus();
-    }
-  }, []);
   return (
     <div className={jcn("flex-1 min-w-0", props.className)}>
       {props.editing ? (
         <input
+          autoFocus
           ref={inputRef}
           type="text"
           value={props.draft}
@@ -105,13 +99,13 @@ export function TodoContent(
           onBlur={props.onCommit}
           onKeyDown={props.onKeydown}
           placeholder="Task name…"
-          className="w-full text-sm font-mono text-stone-800 bg-transparent outline-none placeholder-stone-300"
+          className="w-full text-base font-mono text-stone-800 bg-transparent outline-none placeholder-stone-300"
         />
       ) : (
         <span
           onClick={() => props.onClickEmpty?.()}
           className={jcn(
-            "block text-sm font-mono leading-snug cursor-text select-none",
+            "block text-base font-mono leading-snug cursor-text select-none",
             props.item.complete
               ? "line-through text-stone-400"
               : "text-stone-800",
@@ -186,7 +180,6 @@ export default function TodoItemView(props: {
         <TodoContent
           item={props.item}
           editing={editing}
-          autoFocus={props.autoFocus}
           draft={draft}
           onClickEmpty={() => !props.item.complete && setEditing(true)}
           onChange={(e) => setDraft(e.target.value)}

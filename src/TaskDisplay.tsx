@@ -5,6 +5,7 @@ import {
   DndContext,
   closestCenter,
   DragOverlay,
+  TouchSensor,
 } from "@dnd-kit/core";
 import {
   SortableContext,
@@ -25,6 +26,9 @@ export default function TaskDisplay(
   const activeItem = todos.find((t) => t.id === activeId);
   const sensors = useSensors(
     useSensor(PointerSensor, { activationConstraint: { distance: 8 } }),
+    useSensor(TouchSensor, {
+      activationConstraint: { delay: 250, tolerance: 5 },
+    }),
   );
 
   const handleDragStart = (event: any) => {
