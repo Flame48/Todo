@@ -46,6 +46,12 @@ export default function Header(props: {} & PT_className) {
         >
           Copy
         </button>
+        <button
+          onClick={() => window.location.reload()}
+          className="bg-slate-400 text-stone-100 px-4 py-1 cursor-pointer"
+        >
+          Update
+        </button>
       </span>
     </header>
   );

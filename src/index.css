@@ -1,5 +1,8 @@
 @import "tailwindcss";
 
+@theme {
+}
+
 .noselect * {
   user-select: none;
   -webkit-user-select: none;
