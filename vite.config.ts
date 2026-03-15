@@ -1,9 +1,25 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import tailwindcss from "@tailwindcss/vite";
+import { version } from "./package.json";
 
 // https://vite.dev/config/
 export default defineConfig({
   base: "/Todo/",
-  plugins: [react(), tailwindcss()],
+  plugins: [
+    react(),
+    tailwindcss(),
+    {
+      name: "inject-sw-version",
+      closeBundle() {
+        const swPath = "dist/sw.js";
+        const sw = require("fs").readFileSync(swPath, "utf-8");
+        require("fs").writeFileSync(
+          // Replace __APP_VERSION__ with app version
+          swPath,
+          sw.replace("__APP_VERSION__", version),
+        );
+      },
+    },
+  ],
 });

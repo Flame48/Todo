@@ -1,0 +1,25 @@
+{
+  "name": "TODOs",
+  "short_name": "TODOs",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#1e293b",
+  "theme_color": "#1e293b",
+  "icons": [
+    {
+      "src": "/touch-icon-ipad.png",
+      "sizes": "152x152",
+      "type": "image/png"
+    },
+    {
+      "src": "/touch-icon-ipad-retina.png",
+      "sizes": "167x167",
+      "type": "image/png"
+    },
+    {
+      "src": "/touch-icon-iphone-retina.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ]
+}
