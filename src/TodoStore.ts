@@ -119,6 +119,7 @@ interface TodoStore {
   deleteTodo: (id: string) => void;
   sortByPriority: () => void;
   reorderTodos: (oldIndex: number, newIndex: number) => void;
+  importTodos: (items: Omit<TodoItem, "id" | "createdAt">[]) => void;
 }
 
 export const useTodoStore = create<TodoStore>()(
@@ -177,6 +178,17 @@ export const useTodoStore = create<TodoStore>()(
       reorderTodos: (oldIndex: number, newIndex: number) =>
         set((state) => ({
           todos: arrayMove(state.todos, oldIndex, newIndex),
+        })),
+      importTodos: (items: Omit<TodoItem, "id" | "createdAt">[]) =>
+        set((state) => ({
+          todos: [
+            ...state.todos,
+            ...items.map((item) => ({
+              ...item,
+              id: genId(),
+              createdAt: Date.now(),
+            })),
+          ],
         })),
     }),
     { name: "todos-storage" },
