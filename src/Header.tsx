@@ -19,8 +19,7 @@ export default function Header(props: {} & PT_className) {
   return (
     <header
       className={jcn(
-        // "bg-slate-800 px-6 pt-8 pb-5 sticky top-0 z-10",
-        "bg-rose-800 px-6 pt-8 pb-5 sticky top-0 z-10",
+        "bg-slate-800 px-6 pt-8 pb-5 sticky top-0 z-10",
         props.className,
       )}
     >
