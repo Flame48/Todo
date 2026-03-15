@@ -17,7 +17,13 @@ self.addEventListener("activate", (event) => {
         Promise.all(
           keys.filter((k) => k !== CACHE_NAME).map((k) => caches.delete(k)),
         ),
-      ),
+      )
+      .then(() => {
+        // Reload all open tabs
+        return self.clients.matchAll({ type: "window" }).then((clients) => {
+          clients.forEach((client) => client.navigate(client.url));
+        });
+      }),
   );
   self.clients.claim();
 });
